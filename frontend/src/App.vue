@@ -13,23 +13,33 @@
     </form>
 
     <p v-if="submittedLink">Submitted Link: {{ submittedLink }}</p>
+    <pre v-if="apiResponse">{{ apiResponse }}</pre> <!-- Display JSON response -->
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "App",
   data() {
     return {
-      link: "", // lưu giá trị nhập vào
-      submittedLink: null, // lưu link đã submit
+      link: "",
+      submittedLink: null,
+      apiResponse: null,
     };
   },
   methods: {
-    handleSubmit() {
-      this.submittedLink = this.link; // lưu link khi submit
-      // Bạn có thể thực hiện bất kỳ hành động nào với link này ở đây, ví dụ gọi API
-      console.log("Submitted link:", this.link);
+    async handleSubmit() {
+      this.submittedLink = this.link;
+      try {
+        const response = await axios.post("http://localhost:3000/api/scoreboard", {
+          link: this.link,
+        });
+        this.apiResponse = response.data; // Store API response in component data
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     },
   },
 };
