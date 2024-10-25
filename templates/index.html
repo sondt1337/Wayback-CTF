@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Home - CTF Scoreboard System{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4 animate__animated animate__fadeInDown">Welcome to the CTF Scoreboard System</h1>
+
+<p class="text-center mb-4 animate__animated animate__fadeInUp">Select an option below to view or upload a scoreboard.</p>
+
+<!-- Options Row with cards and AOS animation on scroll -->
+<div class="row">
+    <!-- CTFd Scoreboard Option -->
+    <div class="col-md-4" data-aos="fade-up" data-aos-duration="800">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h5 class="card-title">CTFd Scoreboard</h5>
+                <p class="card-text">Enter a valid CTFd URL to fetch and display the scoreboard.</p>
+                <form action="/ctfd" method="POST">
+                    <div class="mb-3">
+                        <input type="text" name="ctfd_url" class="form-control" placeholder="Enter CTFd URL" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Fetch Scoreboard</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- rCTF Scoreboard Option -->
+    <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h5 class="card-title">rCTF Scoreboard</h5>
+                <p class="card-text">Enter a valid rCTF URL to fetch and display the scoreboard.</p>
+                <form action="/rctf" method="GET">
+                    <div class="mb-3">
+                        <input type="text" name="rctf_url" class="form-control" placeholder="Enter rCTF URL" required>
+                    </div>
+                    <button type="submit" class="btn btn-secondary w-100">Fetch Scoreboard</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload HTML Option -->
+    <div class="col-md-4" data-aos="fade-up" data-aos-duration="1200">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h5 class="card-title">Upload HTML</h5>
+                <p class="card-text">Upload an HTML file to check and display the scoreboard.</p>
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input type="file" name="file" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Upload File</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View All Scoreboards Button with bounce animation -->
+<div class="text-center mt-5" data-aos="fade-up" data-aos-duration="800">
+    <a href="{{ url_for('scoreboards') }}" class="btn btn-info animate__animated animate__bounceIn">View All Scoreboards</a>
+</div>
+{% endblock %}
