@@ -1,9 +1,9 @@
 # Wayback-CTF
 
-**wayback-ctf** is a web application developed to store and manage **scoreboards** of **Capture The Flag (CTF)** competitions. This project supports collecting, storing, and displaying CTF competition data, allowing users to track performance, compare scores across events, and preserve results over time.
+**Wayback-CTF** is a web application developed to store and manage **scoreboards** of **Capture The Flag (CTF)** competitions. This project supports collecting, storing, and displaying CTF competition data, allowing users to track performance, compare scores across events, and preserve results over time.
 
 ## Table of Contents
-- [wayback-ctf](#wayback-ctf)
+- [Wayback-CTF](#Wayback-CTF)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Project Structure](#project-structure)
@@ -26,7 +26,7 @@
 ## Project Structure
 
 ```plaintext
-wayback-ctf
+Wayback-CTF
 ├── backend                  # Backend code (Node.js)
 │   ├── app.js               # Main server file
 │   ├── routes               # Route definitions
