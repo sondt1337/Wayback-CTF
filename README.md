@@ -26,16 +26,24 @@
 
 ```plaintext
 wayback-ctf
-├── backend                  # Contains backend code
+├── backend                  # Backend code (Node.js)
 │   ├── app.js               # Main server file
-│   ├── routes               # Application routes
-│   └── models               # Data schemas
-├── frontend                 # Contains frontend code
-│   ├── src
-│   │   ├── components       # Vue.js components
-│   │   ├── App.vue          # Main Vue component
-│   │   └── main.js          # Frontend entry point
-└── README.md
+│   ├── routes               # Route definitions
+│   ├── models               # Database models
+│   └── node_modules/        # Node modules for backend
+├── frontend                 # Frontend code (Vue.js)
+│   ├── .vscode              # VSCode configurations
+│   ├── public               # Public assets
+│   ├── src                  # Source code
+│   │   ├── assets           # Static assets
+│   │   ├── components       # Vue components
+│   │   │   ├── icons        # Icons for UI
+│   │   │   └── __tests__    # Component tests
+│   │   ├── router           # Vue Router configuration
+│   │   ├── stores           # State management (e.g., Vuex or Pinia)
+│   │   └── views            # Page views
+│   └── node_modules/        # Node modules for frontend
+└── README.md                # Project documentation
 ```
 
 ## Installation
