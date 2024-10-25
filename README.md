@@ -75,8 +75,8 @@ F:\WAYBACK-CTFD
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd project
+   git clone https://github.com/sondt1337/wayback-ctf.git
+   cd wayback-ctf
    ```
 
 2. **Install Python dependencies**:
