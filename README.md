@@ -21,6 +21,7 @@
 - **Data Storage**: Automatically stores scoreboard data, including player rankings and scores.
 - **Scoreboard Display**: Re-displays scoreboard data in an organized format, supporting comparison and review of past competition results.
 - **CSV Export**: Exports competition data in CSV format for long-term storage and easy sharing.
+- **MHTML Upload**: Allows users to upload MHTML files of scoreboards, which are then stored and displayed as accessible scoreboard pages.
 
 ## Project Structure
 
