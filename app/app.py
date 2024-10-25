@@ -38,6 +38,16 @@ def get_title_from_url(url):
 def index():
     return render_template('index.html')
 
+@app.route('/scoreboards')
+def scoreboards():
+    scoreboards = Scoreboard.query.all()
+    return render_template('all_scoreboards.html', scoreboards=scoreboards)
+
+@app.route('/scoreboard/<int:scoreboard_id>')
+def view_scoreboard(scoreboard_id):
+    scoreboard = Scoreboard.query.get_or_404(scoreboard_id)
+    return render_template('scoreboard.html', scoreboard=scoreboard.data, title=scoreboard.title)
+
 @app.route('/ctfd', methods=['POST'])
 def ctfd():
     url = request.form.get('ctfd_url')
@@ -106,19 +116,10 @@ def upload_scoreboard():
     
     return redirect(url_for('scoreboards'))
 
-@app.route('/scoreboards')
-def scoreboards():
-    scoreboards = Scoreboard.query.all()
-    return render_template('all_scoreboards.html', scoreboards=scoreboards)
-
-@app.route('/scoreboard/<int:scoreboard_id>')
-def view_scoreboard(scoreboard_id):
-    scoreboard = Scoreboard.query.get_or_404(scoreboard_id)
-    return render_template('scoreboard.html', scoreboard=scoreboard.data, title=scoreboard.title)
-
 @app.route('/rctf')
 def rctf():
-    return "Chưa hỗ trợ rCTF"
+    flash("rCTF is not yet supported.")
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     with app.app_context():
