@@ -46,41 +46,21 @@ wayback-ctf
 - **MongoDB** (or MongoDB Atlas for online database access)
 
 ### Backend Installation
+```bash
+cd backend  # Navigate to the backend directory
+npm install # Install necessary packages
+npm start   # Start the server
+```
 
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-
-2. Install necessary packages:
-   ```bash
-   npm install
-   ```
-
-3. Start the server:
-   ```bash
-   npm start
-   ```
 
 The backend server will run at `http://localhost:3000`.
 
 ### Frontend Installation
-
-1. Navigate to the frontend directory:
-   ```bash
-   cd ../frontend
-   ```
-
-2. Install necessary packages:
-   ```bash
-   npm install
-   ```
-
-3. Start the frontend server:
-   ```bash
-   npm run dev
-   ```
-
+```bash
+cd ../frontend # Navigate to the frontend directory
+npm install    # Install necessary packages
+npm run dev    # Start the frontend server
+```
 The frontend will run at `http://localhost:5173`.
 
 ## Usage
