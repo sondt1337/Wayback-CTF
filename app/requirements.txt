@@ -1,6 +1,0 @@
-Flask
-Flask-SQLAlchemy
-requests
-beautifulsoup4
-werkzeug
-pillow
