@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}GIF Status{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">GIF Status</h1>
+{% if message %}
+    <p class="text-center">{{ message }}</p>
+{% else %}
+    <p class="text-center">GIF is ready!</p>
+    <div class="text-center">
+        <img src="{{ gif_path }}" alt="GIF" class="img-fluid" />
+    </div>
+{% endif %}
+{% endblock %}

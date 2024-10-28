@@ -4,6 +4,9 @@ import requests
 import re
 from bs4 import BeautifulSoup
 import json
+import subprocess
+import os
+from pathlib import Path
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -120,6 +123,71 @@ def upload_scoreboard():
 def rctf():
     flash("rCTF is not yet supported.")
     return redirect(url_for('index'))
+
+@app.route('/create_gif_ctf', methods=['POST'])
+def create_gif_ctf():
+    if request.method == 'POST':
+        ctf_url = request.form['ctf_url']
+        title = get_title_from_url(ctf_url)
+
+        if title is None:
+            flash('Không thể lấy tiêu đề từ URL.')
+            return redirect(url_for('create_gif_ctf'))
+
+        # Xử lý tên thư mục để loại bỏ ký tự không hợp lệ
+        safe_title = re.sub(r'[<>:"/\\|?*]', '_', title).strip()
+        gifs_directory = Path("static/gifs") / safe_title
+
+        # Đảm bảo thư mục theo tiêu đề tồn tại
+        gifs_directory.mkdir(parents=True, exist_ok=True)
+
+        # Tạo tên file GIF và đường dẫn lưu
+        gif_filename = f"gif_{safe_title}_full.gif"
+        gif_path = gifs_directory / gif_filename
+
+        # Đường dẫn đầy đủ đến script tạo GIF
+        script_path = os.path.join(os.path.dirname(__file__), 'create_gif.py')
+
+        # Gọi script Python để chạy trong nền
+        with open("error_log.txt", "w") as error_file:
+            subprocess.Popen(
+                ['python', script_path, ctf_url, request.form['total_duration'], str(gif_path), safe_title],
+                stdout=subprocess.PIPE,
+                stderr=error_file,
+                shell=True
+            )
+
+        flash('GIF đang được tạo, vui lòng kiểm tra lại sau.')
+        return redirect(url_for('gif_status', gif_filename=gif_filename, title=safe_title))
+
+    return render_template('create_gif_ctf.html')
+
+@app.route('/gif_status/<title>/<gif_filename>')
+def gif_status(gif_filename, title):
+    gifs_directory = Path("static/gifs")
+    gif_path = gifs_directory / title / gif_filename
+
+    if gif_path.exists():
+        return render_template('gif_status.html', gif_path=url_for('static', filename=f'gifs/{title}/{gif_filename}'))
+    else:
+        return render_template('gif_status.html', message="GIF chưa sẵn sàng. Vui lòng thử lại sau.")
+
+@app.route('/all_gifs')
+def all_gifs():
+    gifs_directory = Path("static/gifs")
+    gifs = []
+
+    # Duyệt qua tất cả thư mục con để tìm các file GIF
+    for subdir in gifs_directory.iterdir():
+        if subdir.is_dir():
+            for gif_file in subdir.glob('*.gif'):
+                gifs.append({
+                    'path': str(gif_file.relative_to(gifs_directory)),  # Đường dẫn tương đối dưới dạng chuỗi
+                    'name': gif_file.name,
+                    'subdir': subdir.name  # Lưu tên thư mục con
+                })
+
+    return render_template('all_gifs.html', gifs=gifs)
 
 if __name__ == '__main__':
     with app.app_context():

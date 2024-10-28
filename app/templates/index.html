@@ -19,7 +19,7 @@
                     <div class="mb-3">
                         <input type="text" name="ctfd_url" class="form-control" placeholder="Enter CTFd URL" required>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Fetch Scoreboard</button>
+                    <button type="submit" class="btn btn-primary w-100">Archive Scoreboard</button>
                 </form>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     <div class="mb-3">
                         <input type="text" name="rctf_url" class="form-control" placeholder="Enter rCTF URL" required>
                     </div>
-                    <button type="submit" class="btn btn-secondary w-100">Fetch Scoreboard</button>
+                    <button type="submit" class="btn btn-secondary w-100">Archive Scoreboard</button>
                 </form>
             </div>
         </div>
@@ -58,8 +58,24 @@
     </div>
 </div>
 
-<!-- View All Scoreboards Button with bounce animation -->
 <div class="text-center mt-5" data-aos="fade-up" data-aos-duration="800">
-    <a href="{{ url_for('scoreboards') }}" class="btn btn-info animate__animated animate__bounceIn">View All Scoreboards</a>
+    <div class="card shadow border-0 rounded-3 mx-auto" style="max-width: 500px;">
+        <div class="card-body p-4">
+            <h5 class="card-title">Create GIF From Scoreboard</h5>
+            <p class="card-text text-muted">Enter a valid CTFd URL to fetch and display the scoreboard.</p>
+            <form action="{{ url_for('create_gif_ctf') }}" method="POST">
+                <div class="form-group mb-3">
+                    <label for="ctf_url" class="form-label fw-semibold">CTF URL</label>
+                    <input type="url" class="form-control shadow-sm rounded-2" id="ctf_url" name="ctf_url" placeholder="https://example.com" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="total_duration" class="form-label fw-semibold">Total Duration (seconds)</label>
+                    <input type="number" class="form-control shadow-sm rounded-2" id="total_duration" name="total_duration" placeholder="e.g., 60" required>
+                </div>
+                <button type="submit" class="btn btn-secondary w-100">Create GIF</button>
+            </form>
+        </div>
+    </div>
 </div>
+
 {% endblock %}
