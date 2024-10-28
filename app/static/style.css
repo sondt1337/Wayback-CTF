@@ -54,6 +54,7 @@ h1, h5 {
 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
 .navbar-brand {
 font-weight: bold;
 font-size: 1.5rem;
@@ -71,22 +72,18 @@ color: #4ca1af !important;
 
 /* Footer styling */
 .footer {
-background-color: #1c2833;
-color: #ffffff;
-padding: 0.5rem 0;
-text-align: center;
+    background-color: #1c2833;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
-.footer a {
-color: #ffffff;
-text-decoration: none;
-margin: 0 10px;
-transition: color 0.3s ease;
-}
-
-.footer a:hover {
-color: #4ca1af;
-}
 
 /* Jumbotron styling */
 .jumbotron {
@@ -123,7 +120,75 @@ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 color: #4ca1af;
 }
 
-/* Table styles */
-.table-hover tbody tr:hover {
-background-color: #e6f7f9;
+/* Table Styles */
+.table-responsive {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
 }
+
+.table {
+    background-color: #f9f9f9;
+    color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.table th {
+    background-color: #4ca1af;
+    color: #ffffff;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e6f7f9;
+    transition: background-color 0.3s ease;
+}
+
+/* Responsive Table for Mobile */
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+    .table th, .table td {
+        padding: 0.75rem;
+    }
+}
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 576px) {
+    .table th, .table td {
+        padding: 0.5rem;
+    }
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+}
+
+/* Hiệu ứng mờ dần khi tìm kiếm */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+    pointer-events: none; /* Đảm bảo không nhấp được khi ẩn */
+}
+
