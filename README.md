@@ -1,5 +1,4 @@
-
-# CTF Scoreboard System
+# CTF Scoreboard Archive
 
 This project is a Flask-based microservices application designed to display CTF (Capture the Flag) scoreboards. It uses Docker and Kubernetes for deployment, ensuring scalability, ease of management, and portability.
 
