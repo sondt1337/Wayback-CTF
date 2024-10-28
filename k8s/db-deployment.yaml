@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqlite-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqlite-db
+  template:
+    metadata:
+      labels:
+        app: sqlite-db
+    spec:
+      containers:
+      - name: sqlite-db
+        image: nouchka/sqlite3
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - mountPath: "/var/lib/sqlite3"
+          name: sqlite-data
+      volumes:
+      - name: sqlite-data
+        emptyDir: {}

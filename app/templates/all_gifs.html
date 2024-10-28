@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}All GIFs - CTF Scoreboard{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">All Created GIFs</h1>
+<div class="container">
+    {% if gifs %}
+        <ul class="list-group">
+            {% for gif in gifs %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('gif_status', title=gif.subdir, gif_filename=gif.name) }}" target="_blank">
+                        {{ gif.subdir }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-center">No GIFs have been created yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

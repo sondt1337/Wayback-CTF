@@ -1,0 +1,129 @@
+/* Sticky footer và gradient background */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+.container {
+    flex: 1;
+}
+
+/* Navbar và Footer */
+.navbar, .footer {
+    background-color: #1c2833;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.footer {
+    color: #ffffff;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Cards */
+.card {
+    background-color: #ffffff;
+    color: #333333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Typography */
+h1, h5 {
+    color: #ffffff;
+}
+
+/* Custom CSS Enhancements */
+
+/* Navbar custom styles */
+.navbar {
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+font-weight: bold;
+font-size: 1.5rem;
+color: #ffffff !important;
+}
+
+.nav-link {
+color: #ffffff !important;
+transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+color: #4ca1af !important;
+}
+
+/* Footer styling */
+.footer {
+background-color: #1c2833;
+color: #ffffff;
+padding: 0.5rem 0;
+text-align: center;
+}
+
+.footer a {
+color: #ffffff;
+text-decoration: none;
+margin: 0 10px;
+transition: color 0.3s ease;
+}
+
+.footer a:hover {
+color: #4ca1af;
+}
+
+/* Jumbotron styling */
+.jumbotron {
+background-color: #4ca1af;
+color: #ffffff;
+padding: 3rem 2rem;
+text-align: center;
+}
+
+.jumbotron h1 {
+font-size: 2.5rem;
+font-weight: bold;
+}
+
+.jumbotron p {
+font-size: 1.2rem;
+}
+
+
+/* Card styles */
+.card {
+border: none;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+color: #4ca1af;
+}
+
+/* Table styles */
+.table-hover tbody tr:hover {
+background-color: #e6f7f9;
+}

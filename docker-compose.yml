@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  flask_app:
+    build:
+      context: ./app 
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./app:/app
+    depends_on:
+      - db
+
+  db:
+    image: nouchka/sqlite3
+    container_name: sqlite_db
+    command: tail -f /dev/null  # Giữ container luôn chạy
+    volumes:
+      - db_data:/var/lib/sqlite3
+
+
+volumes:
+  db_data:
